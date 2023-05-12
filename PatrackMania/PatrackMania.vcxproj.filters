@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Cyclone">
+      <UniqueIdentifier>{c9606eda-4ae8-484e-86e0-3cbb373a2e7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Car">
+      <UniqueIdentifier>{4fb82ead-f405-4021-a9a3-e3b916910bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{cb47c542-16f4-4ec6-bf3e-d2cd99ecf2bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scripts">
+      <UniqueIdentifier>{8f9e08a4-8189-46ed-a874-afbc383486b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{b1a90b28-9b40-49dd-9e74-a23e823932b0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Cyclone\body.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\collide_coarse.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\collide_fine.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\contacts.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\core.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\cyclone.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\fgen.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\joints.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\particle.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\pcontacts.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\pfgen.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\plinks.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\precision.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\pworld.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\random.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Cyclone\world.h">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CarController.h">
+      <Filter>Source Files\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\GameObject.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Console.hpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Input.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Loader.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\MeshRenderer.hpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\MonoBehaviour.hpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Transform.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\VertexAttr.hpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\VertexHandler.hpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Viewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\main.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Cyclone\body.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\collide_coarse.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\collide_fine.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\contacts.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\core.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\fgen.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\joints.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\particle.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\pcontacts.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\pfgen.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\plinks.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\pworld.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\random.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Cyclone\world.cpp">
+      <Filter>Source Files\Cyclone</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Viewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CarController.cpp">
+      <Filter>Source Files\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\GameObject.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\MeshRenderer.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Transform.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="glut32.dll" />
+    <None Include="fltkdll.dll" />
+    <None Include="fltkdlld.dll" />
+    <None Include="glew32.dll" />
+    <None Include="..\Cyclone\CppProperties.json" />
+    <None Include="assets\models\car\car.gltf">
+      <Filter>Resource Files\Car</Filter>
+    </None>
+    <None Include="assets\models\car\scene.bin">
+      <Filter>Resource Files\Car</Filter>
+    </None>
+    <None Include="assets\shaders\simple.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="assets\shaders\simple.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="assets\models\road\road.gltf" />
+    <None Include="assets\models\road\road.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="glew32.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\models\car\textures\body.001_baseColor.png">
+      <Filter>Resource Files\Car</Filter>
+    </Image>
+    <Image Include="assets\models\car\textures\details.001_baseColor.png">
+      <Filter>Resource Files\Car</Filter>
+    </Image>
+    <Image Include="assets\models\car\textures\driverwheels.001_baseColor.png">
+      <Filter>Resource Files\Car</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
