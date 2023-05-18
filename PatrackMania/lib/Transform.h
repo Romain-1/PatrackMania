@@ -11,9 +11,13 @@ class GameObject;
 class Transform
 {
 private:
-	glm::vec3 m_position;
-	glm::quat m_rotation;
-	glm::vec3 m_scale;
+	glm::vec3 m_worldPosition;
+	glm::quat m_worldRotation;
+	glm::vec3 m_worldScale;
+
+	glm::vec3 m_localPosition;
+	glm::quat m_localRotation;
+	glm::vec3 m_localScale;
 
 	Transform* m_parent;
 	std::vector<Transform*> m_childs;
@@ -27,12 +31,22 @@ public:
 	glm::quat Rotation() const;
 	glm::vec3 Scale() const;
 
+	glm::vec3 LocalPosition() const;
+	glm::quat LocalRotation() const;
+	glm::vec3 LocalScale() const;
+
 	glm::vec3 Up() const;
 	glm::vec3 Right() const;
 	glm::vec3 Forward() const;
 
 	void SetPosition(const glm::vec3 &position);
 	void SetRotation(const glm::quat& rotation);
+	void SetScale(const glm::vec3& scale);
+
+	void SetLocalPosition(const glm::vec3& position);
+	void SetLocalRotation(const glm::quat& rotation);
+	void SetLocalScale(const glm::vec3& scale);
+
 	void Rotate(float x, float y, float z);
 	void Rotate(const glm::vec3 &axis, float angle);
 	void SetScale(const glm::vec3& scale);
@@ -45,5 +59,12 @@ public:
 	std::vector<Transform*> Childs() const;
 
 	Transform* Find(const std::string& name);
+	glm::mat4 GetModel() const;
+
+private:
+	void UpdateChilds();
+	void RecalculateFromLocal();
+	void RecalculateFromWorld();
+	void Recalculate(const glm::mat4& model);
 };
 

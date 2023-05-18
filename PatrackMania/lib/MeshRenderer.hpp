@@ -1,10 +1,11 @@
 #pragma once
 
 #include "VertexAttr.hpp"
+#include "MonoBehaviour.hpp"
 
 #include "VertexHandler.hpp"
 
-#include "Loader.h"
+#include "ShaderProgram.h"
 
 #include <glm/mat4x4.hpp>
 #include <glm/vec3.hpp>
@@ -15,9 +16,9 @@
 
 namespace tinygltf { class Model; class Node; }
 
-class MeshRenderer
+class MeshRenderer : public MonoBehaviour
 {
-protected:
+private:
 	VertexHandlers m_handler;
 	int m_drawMode;
 	GLint useTexture;

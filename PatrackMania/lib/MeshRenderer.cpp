@@ -86,8 +86,22 @@ MeshRenderer::MeshRenderer(
 	glBindVertexArray(0);
 }
 
-void MeshRenderer::Draw(ShaderProgram* shaderProgram)
+void MeshRenderer::Update()
 {
+	auto shaderProgram = Ending::Graphics.GetShader();
+	auto view = Engine::Graphics.GetCameraView();
+	auto model = transform->GetModel();
+	glm::mat4 mview = view * model;
+
+	glm::mat4 imvp = glm::inverse(mview);
+	glm::mat3 nmat = glm::mat3(glm::transpose(imvp));
+	glm::mat4 mvp = Engine::Graphics.GetCameraProjection() * view * model;
+
+	glUniformMatrix4fv(shaderProgram->uniform("ModelViewMatrix"), 1, GL_FALSE, glm::value_ptr(mview));
+	glUniformMatrix3fv(shaderProgram->uniform("NormalMatrix"), 1, GL_FALSE, glm::value_ptr(nmat));
+	glUniformMatrix4fv(shaderProgram->uniform("MVP"), 1, GL_FALSE, glm::value_ptr(mvp));
+
+
 	glBindTexture(GL_TEXTURE_2D, m_handler.textureId);
 	glUniform1iv(shaderProgram->uniform("UseTexture"), 1, &useTexture);
 	glBindVertexArray(m_handler.vao);

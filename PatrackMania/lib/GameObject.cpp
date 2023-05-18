@@ -36,7 +36,11 @@ void GameObject::Update(float deltaTime)
 	}
 }
 
-void GameObject::Draw(const glm::mat4 &view, const glm::mat4 &projection, const glm::mat4 &parentModel, int indent) const
+void GameObject::Draw(
+	const glm::mat4 &view,
+	const glm::mat4 &projection,
+	const glm::mat4 &parentModel
+) const
 {
 	glm::mat4 model = parentModel;
 	model = glm::translate(model, transform->Position());
@@ -44,27 +48,8 @@ void GameObject::Draw(const glm::mat4 &view, const glm::mat4 &projection, const 
 	model = model * glm::toMat4(transform->Rotation());
 
 	for (auto& child : transform->Childs()) {
-		child->gameObject->Draw(view, projection, model, indent + 1);
+		child->gameObject->Draw(view, projection, model);
 	}
-
-	//glLineWidth(3.0f);
-	//glBegin(GL_LINES);
-	//glColor3f(1, 0, 0);
-
-	//glVertex3f(0.0f, 0.1f, 0.0f);
-	//glVertex3f(0.0f, 100.0f, 0.0f);
-
-	//glColor3f(0.0f, 11.0f, 0.0f);
-
-	//glVertex3d(0.0f, 0.1f, 0.0f);
-	//glVertex3d(100.0f, 0.1, 0.0f);
-
-	//glColor3f(0.0f, 0.0f, 1.0f);
-
-	//glVertex3f(0.0f, 0.1f, 0.0f);
-	//glVertex3f(0.0f, 0.1f, 100.0f);
-	//glEnd();
-	//glLineWidth(1.0f);
 
 	if (meshRenderer == nullptr) {
 		return;
@@ -83,14 +68,14 @@ void GameObject::Draw(const glm::mat4 &view, const glm::mat4 &projection, const 
 	meshRenderer->Draw(shaderProgram);
 }
 
-void GameObject::SetShader(ShaderProgram* shaderProgram)
-{
-	this->shaderProgram = shaderProgram;
-
-	for (auto& child : transform->Childs()) {
-		child->gameObject->SetShader(shaderProgram);
-	}
-}
+//void GameObject::SetShader(ShaderProgram* shaderProgram)
+//{
+//	this->shaderProgram = shaderProgram;
+//
+//	for (auto& child : transform->Childs()) {
+//		child->gameObject->SetShader(shaderProgram);
+//	}
+//}
 
 void GameObject::SetActive(bool state)
 {
@@ -115,7 +100,21 @@ T* GameObject::GetComponent() const
 			return r;
 		}
 	}
+	return nullptr;
 }
+
+
+//template<typename T>
+//bool GameObject::TryGetComponent(T& component) const
+//{
+//	for (auto component : m_components) {
+//		T* r = dynamic_cast<T*>(component);
+//		if (r != nullptr) {
+//			t = *r;
+//			return true;
+//		}
+//	}
+//}
 
 //template<typename T>
 //void GameObject::AddComponent()

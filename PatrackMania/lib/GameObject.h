@@ -1,7 +1,7 @@
 #pragma once
 #include "Transform.h"
 #include "MeshRenderer.hpp"
-#include "Loader.h"
+//#include "Loader.h"
 #include "MonoBehaviour.hpp"
 
 #include <functional>
@@ -18,30 +18,30 @@ public:
 
 	Transform* transform;
 	MeshRenderer* meshRenderer;
-	ShaderProgram* shaderProgram;
+	//ShaderProgram* shaderProgram;
 
 
 	GameObject(
 		const std::string &name,
 		Transform* transform,
-		MeshRenderer* meshRenderer = nullptr,
-		ShaderProgram* shaderProgram = nullptr
+		MeshRenderer* meshRenderer = nullptr
+		//ShaderProgram* shaderProgram = nullptr
 	);
 
-	void SetShader(ShaderProgram* shaderProgram);
+	//void SetShader(ShaderProgram* shaderProgram);
 
 	void Update(float deltaTime);
 	void Draw(
 		const glm::mat4& view,
 		const glm::mat4& projection,
-		const glm::mat4& parentModel = glm::mat4(1.f),
-		int indent = 0
+		const glm::mat4& parentModel = glm::mat4(1.f)
 	) const;
 
 	void ApplyOnHierarchy(std::function<void(GameObject *)> callback);
 	void SetActive(bool state);
 
 	template<typename T> T* GetComponent() const;
+	//template<typename T> bool TryGetComponent(T& component) const;
 	template<typename T> void AddComponent() {
 		T* component = new T();
 		MonoBehaviour* r = dynamic_cast<MonoBehaviour*>(component);
