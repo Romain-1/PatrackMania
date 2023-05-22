@@ -81,25 +81,25 @@
     <ClInclude Include="src\CarController.h">
       <Filter>Source Files\Scripts</Filter>
     </ClInclude>
-    <ClInclude Include="lib\GameObject.h">
+    <ClInclude Include="lib\Engine\GameObject.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="lib\Console.hpp">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="lib\Input.h">
+    <ClInclude Include="lib\Engine\Input.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="lib\Loader.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="lib\MeshRenderer.hpp">
+    <ClInclude Include="lib\Engine\BaseComponents\MeshRenderer.hpp">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="lib\MonoBehaviour.hpp">
+    <ClInclude Include="lib\Engine\MonoBehaviour.hpp">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="lib\Transform.h">
+    <ClInclude Include="lib\Engine\BaseComponents\Transform.h">
       <Filter>Source Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="lib\VertexAttr.hpp">
@@ -113,6 +113,21 @@
     </ClInclude>
     <ClInclude Include="src\main.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Engine\Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Engine\Modules\IModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Engine\Modules\Graphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Engine\Loaders\ModelLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\ShaderProgram.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -164,7 +179,7 @@
     <ClCompile Include="lib\Console.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lib\Input.cpp">
+    <ClCompile Include="lib\Engine\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lib\Viewer.cpp">
@@ -173,14 +188,23 @@
     <ClCompile Include="src\CarController.cpp">
       <Filter>Source Files\Scripts</Filter>
     </ClCompile>
-    <ClCompile Include="lib\GameObject.cpp">
+    <ClCompile Include="lib\Engine\GameObject.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="lib\MeshRenderer.cpp">
+    <ClCompile Include="lib\Engine\BaseComponents\MeshRenderer.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="lib\Transform.cpp">
+    <ClCompile Include="lib\Engine\BaseComponents\Transform.cpp">
       <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Engine\Modules\Graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Engine\Loaders\ModelLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Engine\Engine.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +229,8 @@
     <None Include="assets\models\road\road.bin">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="assets\shaders\TextShader.frag" />
+    <None Include="assets\shaders\TextShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="glew32.lib" />
@@ -219,5 +245,8 @@
     <Image Include="assets\models\car\textures\driverwheels.001_baseColor.png">
       <Filter>Resource Files\Car</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\Ubuntu-Regular.ttf" />
   </ItemGroup>
 </Project>

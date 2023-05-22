@@ -146,18 +146,23 @@
     <ClInclude Include="..\Cyclone\pworld.h" />
     <ClInclude Include="..\Cyclone\random.h" />
     <ClInclude Include="..\Cyclone\world.h" />
+    <ClInclude Include="lib\Engine\Engine.h" />
+    <ClInclude Include="lib\Engine\Modules\Graphics.h" />
+    <ClInclude Include="lib\Engine\Modules\IModule.h" />
+    <ClInclude Include="lib\Engine\Loaders\ModelLoader.h" />
+    <ClInclude Include="lib\ShaderProgram.h" />
     <ClInclude Include="src\CarController.h" />
-    <ClInclude Include="lib\GameObject.h" />
+    <ClInclude Include="lib\Engine\GameObject.h" />
     <ClInclude Include="lib\Console.hpp" />
-    <ClInclude Include="lib\MeshRenderer.hpp" />
-    <ClInclude Include="lib\Input.h" />
+    <ClInclude Include="lib\Engine\BaseComponents\MeshRenderer.hpp" />
+    <ClInclude Include="lib\Engine\Input.h" />
     <ClInclude Include="lib\Loader.h" />
     <ClInclude Include="lib\VertexAttr.hpp" />
     <ClInclude Include="lib\VertexHandler.hpp" />
     <ClInclude Include="lib\Viewer.h" />
     <ClInclude Include="src\main.h" />
-    <ClInclude Include="lib\Transform.h" />
-    <ClInclude Include="lib\MonoBehaviour.hpp" />
+    <ClInclude Include="lib\Engine\BaseComponents\Transform.h" />
+    <ClInclude Include="lib\Engine\MonoBehaviour.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Cyclone\body.cpp" />
@@ -174,14 +179,17 @@
     <ClCompile Include="..\Cyclone\pworld.cpp" />
     <ClCompile Include="..\Cyclone\random.cpp" />
     <ClCompile Include="..\Cyclone\world.cpp" />
+    <ClCompile Include="lib\Engine\Engine.cpp" />
+    <ClCompile Include="lib\Engine\Modules\Graphics.cpp" />
+    <ClCompile Include="lib\Engine\Loaders\ModelLoader.cpp" />
     <ClCompile Include="src\CarController.cpp" />
-    <ClCompile Include="lib\GameObject.cpp" />
+    <ClCompile Include="lib\Engine\GameObject.cpp" />
     <ClCompile Include="lib\Console.cpp" />
-    <ClCompile Include="lib\MeshRenderer.cpp" />
-    <ClCompile Include="lib\Input.cpp" />
+    <ClCompile Include="lib\Engine\BaseComponents\MeshRenderer.cpp" />
+    <ClCompile Include="lib\Engine\Input.cpp" />
     <ClCompile Include="lib\Viewer.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="lib\Transform.cpp" />
+    <ClCompile Include="lib\Engine\BaseComponents\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Cyclone\CppProperties.json" />
@@ -191,6 +199,8 @@
     <None Include="assets\models\road\road.gltf" />
     <None Include="assets\shaders\simple.frag" />
     <None Include="assets\shaders\simple.vert" />
+    <None Include="assets\shaders\TextShader.frag" />
+    <None Include="assets\shaders\TextShader.vert" />
     <None Include="fltkdll.dll" />
     <None Include="fltkdlld.dll" />
     <None Include="glew32.dll" />
@@ -203,6 +213,9 @@
     <Image Include="assets\models\car\textures\body.001_baseColor.png" />
     <Image Include="assets\models\car\textures\details.001_baseColor.png" />
     <Image Include="assets\models\car\textures\driverwheels.001_baseColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\Ubuntu-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

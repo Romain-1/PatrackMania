@@ -19,7 +19,7 @@ class Viewer;
  *		- The aspect ratio (the ratio width/height for the resultant image)
 */
 
-#include <glm/glm.hpp>
+#include <glm/vec3.hpp>
 
 
 class Viewer {

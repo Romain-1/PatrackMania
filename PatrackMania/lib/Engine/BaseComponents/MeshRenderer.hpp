@@ -1,11 +1,13 @@
 #pragma once
 
-#include "VertexAttr.hpp"
-#include "MonoBehaviour.hpp"
+#include <GL/gl3w.h>
 
-#include "VertexHandler.hpp"
+#include "lib/VertexAttr.hpp"
+#include "lib/Engine/MonoBehaviour.hpp"
 
-#include "ShaderProgram.h"
+#include "lib/VertexHandler.hpp"
+
+#include "lib/ShaderProgram.h"
 
 #include <glm/mat4x4.hpp>
 #include <glm/vec3.hpp>
@@ -24,12 +26,10 @@ private:
 	GLint useTexture;
 
 public:
-	virtual void Draw(ShaderProgram* shader);
-	MeshRenderer(
+	void Draw();
+	void SetModel(
 		const tinygltf::Model& model,
 		const tinygltf::Node& node,
 		int drawMode = GL_TRIANGLES
 	);
-
-	void ToggleTexture(bool state);
 };

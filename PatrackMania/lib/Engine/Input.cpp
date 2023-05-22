@@ -1,5 +1,5 @@
 #include "Input.h"
-#include "Console.hpp"
+#include "lib/Console.hpp"
 
 void Keyboard::KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {

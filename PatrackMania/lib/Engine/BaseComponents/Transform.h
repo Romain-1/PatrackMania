@@ -41,7 +41,7 @@ public:
 
 	void SetPosition(const glm::vec3 &position);
 	void SetRotation(const glm::quat& rotation);
-	void SetScale(const glm::vec3& scale);
+	//void SetScale(const glm::vec3& scale);
 
 	void SetLocalPosition(const glm::vec3& position);
 	void SetLocalRotation(const glm::quat& rotation);
@@ -49,7 +49,6 @@ public:
 
 	void Rotate(float x, float y, float z);
 	void Rotate(const glm::vec3 &axis, float angle);
-	void SetScale(const glm::vec3& scale);
 
 	void SetUp(const glm::vec3& up);
 	void SetRight(const glm::vec3& right);

@@ -1,19 +1,22 @@
-#include "MeshRenderer.hpp"
-#include <GL/gl3w.h>
-#include <glm/ext/matrix_transform.hpp>
 
+
+#include "MeshRenderer.hpp"
+#include "lib/Engine/Engine.h"
+
+#include <glm/ext/matrix_transform.hpp>
 #include <tiny_gltf.h>
 #include <glm/gtx/string_cast.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Console.hpp"
-
-MeshRenderer::MeshRenderer(
+void MeshRenderer::SetModel(
 	const tinygltf::Model& model,
 	const tinygltf::Node& node,
 	int drawMode
-) : m_drawMode(drawMode), useTexture(false)
+)
 {
+	m_drawMode = drawMode;
+	useTexture = false;
+
 	auto& mesh = model.meshes[node.mesh];
 	auto primitive = mesh.primitives[0];
 
@@ -67,7 +70,6 @@ MeshRenderer::MeshRenderer(
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(2);
 
-
 	if (primitive.material < 0) return;
 
 	auto & m = model.materials[primitive.material];
@@ -86,16 +88,17 @@ MeshRenderer::MeshRenderer(
 	glBindVertexArray(0);
 }
 
-void MeshRenderer::Update()
+void MeshRenderer::Draw()
 {
-	auto shaderProgram = Ending::Graphics.GetShader();
-	auto view = Engine::Graphics.GetCameraView();
+	auto shaderProgram = Engine::Graphics->GetShader();
+	auto view = Engine::Graphics->GetCameraView();
+
 	auto model = transform->GetModel();
 	glm::mat4 mview = view * model;
 
 	glm::mat4 imvp = glm::inverse(mview);
 	glm::mat3 nmat = glm::mat3(glm::transpose(imvp));
-	glm::mat4 mvp = Engine::Graphics.GetCameraProjection() * view * model;
+	glm::mat4 mvp = Engine::Graphics->GetCameraProjection() * view * model;
 
 	glUniformMatrix4fv(shaderProgram->uniform("ModelViewMatrix"), 1, GL_FALSE, glm::value_ptr(mview));
 	glUniformMatrix3fv(shaderProgram->uniform("NormalMatrix"), 1, GL_FALSE, glm::value_ptr(nmat));
@@ -108,10 +111,4 @@ void MeshRenderer::Update()
 	int size;
 	glGetBufferParameteriv(GL_ELEMENT_ARRAY_BUFFER, GL_BUFFER_SIZE, &size);
 	glDrawElements(m_drawMode, size / sizeof(unsigned int), GL_UNSIGNED_INT, 0);
-}
-
-// TODO get rid of that
-void MeshRenderer::ToggleTexture(bool state)
-{
-	useTexture = state;
 }

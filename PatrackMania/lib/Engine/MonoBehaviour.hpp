@@ -1,7 +1,7 @@
 #pragma once
 
-#include "lib/Transform.h"
-#include "lib/Input.h"
+#include "BaseComponents/Transform.h"
+#include "lib/Engine/Input.h"
 #include "lib/Console.hpp"
 
 class MonoBehaviour

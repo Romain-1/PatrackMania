@@ -1,6 +1,7 @@
 #include "CarController.h"
 
 #include <glm/gtx/compatibility.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 void CarController::Start()
 {
@@ -10,18 +11,19 @@ void CarController::Start()
 
 void CarController::ControlWheel(float t, float deltaTime)
 {
-	FL->SetRotation(
-		glm::lerp(FL->Rotation(), glm::quat(glm::vec3(0.f, t / 3, 0.f)), 0.3f)
-	);
-	FR->SetRotation(
-		glm::lerp(FR->Rotation(), glm::quat(glm::vec3(0.f, t / 3, 0.f)), 0.3f)
-	);
+	//FL->SetRotation(
+	//	glm::lerp(FL->Rotation(), glm::quat(glm::vec3(0.f, t / 3, 0.f)), 0.3f)
+	//);
+	//FR->SetRotation(
+	//	glm::lerp(FR->Rotation(), glm::quat(glm::vec3(0.f, t / 3, 0.f)), 0.3f)
+	//);
 
-	transform->Rotate(0, 0, t * deltaTime);
+	//transform->Rotate(0, 0, t * deltaTime);
 }
 
 void CarController::Update(float deltaTime)
 {
+	Console.Log("CarController::Update", glm::to_string(transform->Position()));
 	if (Keyboard::GetKeyState(GLFW_KEY_A) == PRESSED) {
 		ControlWheel(1, deltaTime);
 	}

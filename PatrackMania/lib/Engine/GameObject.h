@@ -1,7 +1,7 @@
 #pragma once
-#include "Transform.h"
-#include "MeshRenderer.hpp"
-//#include "Loader.h"
+
+#include "BaseComponents/Transform.h"
+#include "BaseComponents/MeshRenderer.hpp"
 #include "MonoBehaviour.hpp"
 
 #include <functional>
@@ -17,32 +17,31 @@ public:
 	std::string name;
 
 	Transform* transform;
-	MeshRenderer* meshRenderer;
-	//ShaderProgram* shaderProgram;
 
 
 	GameObject(
 		const std::string &name,
-		Transform* transform,
-		MeshRenderer* meshRenderer = nullptr
-		//ShaderProgram* shaderProgram = nullptr
+		Transform* transform
 	);
 
-	//void SetShader(ShaderProgram* shaderProgram);
-
 	void Update(float deltaTime);
-	void Draw(
-		const glm::mat4& view,
-		const glm::mat4& projection,
-		const glm::mat4& parentModel = glm::mat4(1.f)
-	) const;
 
 	void ApplyOnHierarchy(std::function<void(GameObject *)> callback);
 	void SetActive(bool state);
 
-	template<typename T> T* GetComponent() const;
-	//template<typename T> bool TryGetComponent(T& component) const;
-	template<typename T> void AddComponent() {
+	template<typename T> T* GetComponent() const
+	{
+		for (auto component : m_components) {
+			T* r = dynamic_cast<T*>(component);
+			if (r != nullptr) {
+				return r;
+			}
+		}
+		return nullptr;
+	}
+
+	template<typename T> T* AddComponent()
+	{
 		T* component = new T();
 		MonoBehaviour* r = dynamic_cast<MonoBehaviour*>(component);
 
@@ -51,10 +50,10 @@ public:
 			r->gameObject = this;
 			r->transform = transform;
 			r->enabled = true;
-		}
-		else {
+		} else {
 			throw new std::runtime_error("Trying to add a component that does not inherit from MonoBehaviour.");
 		}
+		return component;
 	}
 
 };
