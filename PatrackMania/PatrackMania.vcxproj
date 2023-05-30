@@ -146,11 +146,18 @@
     <ClInclude Include="..\Cyclone\pworld.h" />
     <ClInclude Include="..\Cyclone\random.h" />
     <ClInclude Include="..\Cyclone\world.h" />
+    <ClInclude Include="src\CameraFollow.h" />
+    <ClInclude Include="lib\Engine\BaseComponents\Camera.h" />
     <ClInclude Include="lib\Engine\Engine.h" />
     <ClInclude Include="lib\Engine\Modules\Graphics.h" />
     <ClInclude Include="lib\Engine\Modules\IModule.h" />
-    <ClInclude Include="lib\Engine\Loaders\ModelLoader.h" />
-    <ClInclude Include="lib\ShaderProgram.h" />
+    <ClInclude Include="lib\Engine\Ressources\Loaders\ModelLoader.h" />
+    <ClInclude Include="lib\Engine\Ressources\Data\Shader.h" />
+    <ClInclude Include="lib\Engine\Ressources\Data\Mesh.h" />
+    <ClInclude Include="Line.h" />
+    <ClInclude Include="lib\Engine\Ressources\Data\Material.h" />
+    <ClInclude Include="lib\Engine\Ressources\Ressources.h" />
+    <ClInclude Include="lib\Engine\Ressources\Data\SkyBox.h" />
     <ClInclude Include="src\CarController.h" />
     <ClInclude Include="lib\Engine\GameObject.h" />
     <ClInclude Include="lib\Console.hpp" />
@@ -163,6 +170,7 @@
     <ClInclude Include="src\main.h" />
     <ClInclude Include="lib\Engine\BaseComponents\Transform.h" />
     <ClInclude Include="lib\Engine\MonoBehaviour.hpp" />
+    <ClInclude Include="lib\Engine\Ressources\Data\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Cyclone\body.cpp" />
@@ -179,9 +187,15 @@
     <ClCompile Include="..\Cyclone\pworld.cpp" />
     <ClCompile Include="..\Cyclone\random.cpp" />
     <ClCompile Include="..\Cyclone\world.cpp" />
+    <ClCompile Include="src\CameraFollow.cpp" />
+    <ClCompile Include="lib\Engine\BaseComponents\Camera.cpp" />
     <ClCompile Include="lib\Engine\Engine.cpp" />
     <ClCompile Include="lib\Engine\Modules\Graphics.cpp" />
-    <ClCompile Include="lib\Engine\Loaders\ModelLoader.cpp" />
+    <ClCompile Include="lib\Engine\Ressources\Loaders\ModelLoader.cpp" />
+    <ClCompile Include="lib\Engine\Ressources\Data\Mesh.cpp" />
+    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="lib\Engine\Ressources\Ressources.cpp" />
+    <ClCompile Include="lib\Engine\Ressources\Data\SkyBox.cpp" />
     <ClCompile Include="src\CarController.cpp" />
     <ClCompile Include="lib\Engine\GameObject.cpp" />
     <ClCompile Include="lib\Console.cpp" />
@@ -199,6 +213,8 @@
     <None Include="assets\models\road\road.gltf" />
     <None Include="assets\shaders\simple.frag" />
     <None Include="assets\shaders\simple.vert" />
+    <None Include="assets\shaders\skybox.frag" />
+    <None Include="assets\shaders\skybox.vert" />
     <None Include="assets\shaders\TextShader.frag" />
     <None Include="assets\shaders\TextShader.vert" />
     <None Include="fltkdll.dll" />
@@ -213,6 +229,7 @@
     <Image Include="assets\models\car\textures\body.001_baseColor.png" />
     <Image Include="assets\models\car\textures\details.001_baseColor.png" />
     <Image Include="assets\models\car\textures\driverwheels.001_baseColor.png" />
+    <Image Include="assets\textures\baseTexture.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\Ubuntu-Regular.ttf" />

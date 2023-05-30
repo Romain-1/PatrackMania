@@ -45,5 +45,6 @@ void main(void)
 	uv = VertexUV;
 	//uv_color = texture(TextureSampler, VertexUV).rgb;
 
-	gl_Position = MVP * vec4(VertexPosition, 1);
+	vec4 pos = MVP * vec4(VertexPosition, 1);
+	gl_Position = vec4(pos.x, pos.y, pos.z, pos.w);
 }

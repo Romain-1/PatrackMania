@@ -123,10 +123,34 @@
     <ClInclude Include="lib\Engine\Modules\Graphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lib\Engine\Loaders\ModelLoader.h">
+    <ClInclude Include="lib\Engine\Ressources\Loaders\ModelLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lib\ShaderProgram.h">
+    <ClInclude Include="lib\Engine\Ressources\Data\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Engine\Ressources\Data\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Engine\Ressources\Data\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Engine\Ressources\Data\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Engine\Ressources\Ressources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Engine\Ressources\Data\SkyBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Engine\BaseComponents\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CameraFollow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -200,10 +224,28 @@
     <ClCompile Include="lib\Engine\Modules\Graphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lib\Engine\Loaders\ModelLoader.cpp">
+    <ClCompile Include="lib\Engine\Ressources\Loaders\ModelLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lib\Engine\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Engine\Ressources\Data\Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Engine\Ressources\Ressources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Engine\Ressources\Data\SkyBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Engine\BaseComponents\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CameraFollow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -231,6 +273,8 @@
     </None>
     <None Include="assets\shaders\TextShader.frag" />
     <None Include="assets\shaders\TextShader.vert" />
+    <None Include="assets\shaders\skybox.frag" />
+    <None Include="assets\shaders\skybox.vert" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="glew32.lib" />
@@ -244,6 +288,9 @@
     </Image>
     <Image Include="assets\models\car\textures\driverwheels.001_baseColor.png">
       <Filter>Resource Files\Car</Filter>
+    </Image>
+    <Image Include="assets\textures\baseTexture.png">
+      <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

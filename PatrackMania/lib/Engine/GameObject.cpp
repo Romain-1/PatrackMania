@@ -18,6 +18,19 @@ GameObject::GameObject(
 	transform->gameObject = this;
 }
 
+GameObject::GameObject(
+	const std::string& name,
+	const glm::vec3& position,
+	const glm::quat& rotation,
+	const glm::vec3 & scale
+) :
+	name(name),
+	activeInHierarchy(true)
+{
+	transform = new Transform(position, rotation, scale);
+	transform->gameObject = this;
+}
+
 
 void GameObject::Update(float deltaTime)
 {

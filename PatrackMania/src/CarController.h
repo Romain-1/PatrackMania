@@ -9,6 +9,7 @@ private:
 	Transform* FR = nullptr;
 	Transform* BL = nullptr;
 	Transform* BR = nullptr;
+	Transform* test = nullptr;
 
 	void ControlWheel(float t, float deltaTime);
 

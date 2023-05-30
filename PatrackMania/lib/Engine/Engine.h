@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Modules/Graphics.h"
+#include "Ressources/Ressources.h"
 
 class Engine
 {
@@ -12,6 +13,7 @@ private:
 
 public:
 	static inline Module::Graphics* Graphics;
+	static inline Ressources* Ressources;
 
 public:
 	static void Run();

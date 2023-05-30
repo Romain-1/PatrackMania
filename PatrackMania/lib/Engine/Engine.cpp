@@ -1,9 +1,14 @@
+#include <GL/gl3w.h>
+
 #include "Engine.h"
 
 #include <chrono>
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
+
+#include "Ressources/Data/Shader.h"
+#include <glm/gtc/type_ptr.hpp>
 
 void MouseDragging(Viewer& viewer, glm::vec2& lastMouse);
 
@@ -15,11 +20,11 @@ struct Character {
 };
 
 std::map<char, Character> Characters;
-ShaderProgram* TextShader;
+Shader* TextShader;
 unsigned int VAO, VBO;
 
 void RenderText(
-    ShaderProgram* s,
+    Shader* s,
     std::string text,
     float x,
     float y,
@@ -27,32 +32,42 @@ void RenderText(
     glm::vec3 color
 )
 {
+	glm::vec2 dimensions = Engine::Graphics->GetWindowSize();
+	glm::mat4 projection = glm::ortho(0.0f, dimensions.x, dimensions.y, 0.0f);//Engine::Graphics->GetCameraProjection();
     // activate corresponding render state	
     s->use();
-    glUniform3f(s->uniform("textColor"), color.x, color.y, color.z);
-    glActiveTexture(GL_TEXTURE0);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glUniform3f(s->uniform("textColor"), color.x, color.y, color.z);
+	glUniformMatrix4fv( s->uniform("projection"), 1, GL_FALSE, glm::value_ptr( projection ) );
+	glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(VAO);
 
     // iterate through all characters
-    std::string::const_iterator c;
-    for (c = text.begin(); c != text.end(); c++)
+	Character tallest = Characters[text[0]];
+	for (auto c : text) {
+		if (Characters[c].Size.y > tallest.Size.y) tallest = Characters[c];
+	}
+
+    for (auto c : text)
     {
-        Character ch = Characters[*c];
+        Character ch = Characters[c];
 
         float xpos = x + ch.Bearing.x * scale;
-        float ypos = y - (ch.Size.y - ch.Bearing.y) * scale;
+        float ypos = y + (tallest.Size.y - ch.Size.y) * scale;
 
         float w = ch.Size.x * scale;
         float h = ch.Size.y * scale;
         // update VBO for each character
         float vertices[6][4] = {
-            { xpos,     ypos + h,   0.0f, 0.0f },
-            { xpos,     ypos,       0.0f, 1.0f },
-            { xpos + w, ypos,       1.0f, 1.0f },
+            { xpos,		ypos,		0.0f, 0.0f },
+            { xpos,		ypos + h,	0.0f, 1.0f },
+            { xpos + w,	ypos + h,	1.0f, 1.0f },
 
-            { xpos,     ypos + h,   0.0f, 0.0f },
-            { xpos + w, ypos,       1.0f, 1.0f },
-            { xpos + w, ypos + h,   1.0f, 0.0f }
+            { xpos,		ypos,		0.0f, 0.0f },
+            { xpos + w,	ypos + h,	1.0f, 1.0f },
+            { xpos + w,	ypos,		1.0f, 0.0f }
         };
         // render glyph texture over quad
         glBindTexture(GL_TEXTURE_2D, ch.TextureID);
@@ -82,11 +97,8 @@ void InitText()
 	{
 		throw new std::runtime_error("ERROR::FREETYPE: Failed to load font");
 	}
-	FT_Set_Pixel_Sizes(face, 0, 48);
-	if (FT_Load_Char(face, 'X', FT_LOAD_RENDER))
-	{
-		throw new std::runtime_error("ERROR::FREETYTPE: Failed to load Glyph");
-	}
+	FT_Set_Pixel_Sizes(face, 0, 20);
+
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // disable byte-alignment restriction
 
 	for (unsigned char c = 0; c < 128; c++)
@@ -102,14 +114,9 @@ void InitText()
 		glGenTextures(1, &texture);
 		glBindTexture(GL_TEXTURE_2D, texture);
 		glTexImage2D(
-			GL_TEXTURE_2D,
-			0,
-			GL_RED,
-			face->glyph->bitmap.width,
-			face->glyph->bitmap.rows,
-			0,
-			GL_RED,
-			GL_UNSIGNED_BYTE,
+			GL_TEXTURE_2D, 0, GL_RED,
+			face->glyph->bitmap.width, face->glyph->bitmap.rows,
+			0, GL_RED, GL_UNSIGNED_BYTE,
 			face->glyph->bitmap.buffer
 		);
 		// set texture options
@@ -119,10 +126,10 @@ void InitText()
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		// now store character for later use
 		Character character = {
-			texture,
-			glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
-			glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
-			face->glyph->advance.x
+			.TextureID = texture,
+			.Size = glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
+			.Bearing = glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
+			.Advance = (unsigned int)face->glyph->advance.x
 		};
 		Characters.insert(std::pair<char, Character>(c, character));
 	}
@@ -132,7 +139,6 @@ void InitText()
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
 
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
@@ -144,10 +150,11 @@ void InitText()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	TextShader = new ShaderProgram();
+	TextShader = new Shader();
 	TextShader->initFromFiles("assets/shaders/TextShader.vert", "assets/shaders/TextShader.frag");
 
 	TextShader->addUniform("textColor");
+	TextShader->addUniform("projection");
 }
 
 void Engine::Run()
@@ -159,9 +166,9 @@ void Engine::Run()
 	glm::vec2 lastMouse(0, 0);
 	while (m_running && !Graphics->WindowShouldClose())
 	{
-		Console.Log(__func__, "loop");
+		//Console.Log(__func__, "loop");
 
-		//RenderText(TextShader, "Hello world", 100, 100, 10, glm::vec3(255, 0, 0));
+		RenderText(TextShader, "Hello world", 100, 100, 1, glm::vec3(200, 200, 200));
 		auto start = std::chrono::system_clock::now();
 
 		for (auto module : m_addedModules) { module->Init(); m_modules.push_back(module); }
@@ -174,10 +181,9 @@ void Engine::Run()
 			});
 		}
 
-		RenderText(TextShader, "This is sample text", 10.0f, 10.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f));
 		if (Mouse::Any(JUST_PRESSED))
 			lastMouse = Mouse::cursor;
-		MouseDragging(*Graphics->m_viewer, lastMouse);
+		//MouseDragging(*Graphics->m_viewer, lastMouse);
 
 		auto end = std::chrono::system_clock::now();
 		std::chrono::duration<double> elapsed_seconds = end - start;

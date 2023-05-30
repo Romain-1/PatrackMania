@@ -27,6 +27,13 @@ public:
 
 	Transform();
 
+	Transform(
+		const glm::vec3& position,
+		const glm::quat& rotation = glm::quat(1, 0, 0, 0),
+		const glm::vec3& scale = glm::vec3(1, 1, 1)
+	);
+
+
 	glm::vec3 Position() const;
 	glm::quat Rotation() const;
 	glm::vec3 Scale() const;
@@ -48,7 +55,8 @@ public:
 	void SetLocalScale(const glm::vec3& scale);
 
 	void Rotate(float x, float y, float z);
-	void Rotate(const glm::vec3 &axis, float angle);
+	void Rotate(const glm::vec3& axis, float angle);
+	void SetLocalRotation(const glm::vec3& axis, float angle);
 
 	void SetUp(const glm::vec3& up);
 	void SetRight(const glm::vec3& right);
