@@ -139,11 +139,10 @@ void Graphics::Update(float deltaTime, const std::vector<GameObject*> &objects)
 	}
 
 	// Update events
-
-	glfwPollEvents();
-
 	Mouse::Update();
 	Keyboard::Update();
+
+	glfwPollEvents();
 }
 
 void Graphics::SetMainCamera(Camera* camera)

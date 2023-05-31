@@ -16,6 +16,9 @@ GameObject::GameObject(
 	activeInHierarchy(true)
 {
 	transform->gameObject = this;
+#ifndef PROD
+	transformGizmos = new TransformGizmos();
+#endif
 }
 
 GameObject::GameObject(
@@ -29,6 +32,10 @@ GameObject::GameObject(
 {
 	transform = new Transform(position, rotation, scale);
 	transform->gameObject = this;
+
+#ifndef PROD
+	transformGizmos = new TransformGizmos();
+#endif
 }
 
 
@@ -45,6 +52,10 @@ void GameObject::Update(float deltaTime)
 		if (!component->enabled) continue;
 		component->Update(deltaTime);
 	}
+
+#ifndef PROD
+	transformGizmos->Draw();
+#endif
 }
 
 void GameObject::SetActive(bool state)

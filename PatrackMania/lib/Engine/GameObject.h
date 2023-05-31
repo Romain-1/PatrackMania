@@ -1,6 +1,7 @@
 #pragma once
 
 #include "BaseComponents/Transform.h"
+#include "Gizmos/TransformGizmos.h"
 #include "BaseComponents/MeshRenderer.hpp"
 #include "MonoBehaviour.hpp"
 
@@ -17,7 +18,9 @@ public:
 	std::string name;
 
 	Transform* transform;
-
+#ifndef PROD
+	TransformGizmos* transformGizmos;
+#endif
 
 	GameObject(
 		const std::string &name,

@@ -183,6 +183,10 @@ void Engine::Run()
 
 		if (Mouse::Any(JUST_PRESSED))
 			lastMouse = Mouse::cursor;
+		if (Keyboard::GetKeyState(GLFW_KEY_F2) == JUST_PRESSED) {
+			debug = !debug;
+			Console.Log("Debug mode", debug?"on":"off");
+		}
 		//MouseDragging(*Graphics->m_viewer, lastMouse);
 
 		auto end = std::chrono::system_clock::now();

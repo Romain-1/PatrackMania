@@ -171,6 +171,7 @@
     <ClInclude Include="lib\Engine\BaseComponents\Transform.h" />
     <ClInclude Include="lib\Engine\MonoBehaviour.hpp" />
     <ClInclude Include="lib\Engine\Ressources\Data\Texture.h" />
+    <ClInclude Include="lib\Engine\Gizmos\TransformGizmos.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Cyclone\body.cpp" />
@@ -204,6 +205,7 @@
     <ClCompile Include="lib\Viewer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="lib\Engine\BaseComponents\Transform.cpp" />
+    <ClCompile Include="lib\Engine\Gizmos\TransformGizmos.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Cyclone\CppProperties.json" />

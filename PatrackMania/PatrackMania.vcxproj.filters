@@ -153,6 +153,9 @@
     <ClInclude Include="src\CameraFollow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lib\Engine\Gizmos\TransformGizmos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Cyclone\body.cpp">
@@ -246,6 +249,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\CameraFollow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Engine\Gizmos\TransformGizmos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

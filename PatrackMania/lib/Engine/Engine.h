@@ -12,6 +12,7 @@ private:
 	static inline bool m_running;
 
 public:
+	static inline bool debug = false;
 	static inline Module::Graphics* Graphics;
 	static inline Ressources* Ressources;
 

@@ -80,4 +80,6 @@ void SkyBox::Draw()
 	glBindVertexArray(0);
 
 	glDepthFunc(GL_LESS);
+
+	m_shader->disable();
 }

@@ -74,4 +74,3 @@ private:
 	void RecalculateFromWorld();
 	void Recalculate(const glm::mat4& model);
 };
-

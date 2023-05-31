@@ -6,6 +6,11 @@
 
 #include <iostream>
 
+void Ressources::InitDefault()
+{
+	AddMesh("defaultCube", Mesh::GenerateCubeMesh());
+	AddMesh("defaultSphere", Mesh::GenerateSphereMesh());
+}
 
 Texture* Ressources::GetTexture(const std::string& name) const { return m_textures.at(name); }
 Material* Ressources::GetMaterial(const std::string& name) const { return m_materials.at(name); }

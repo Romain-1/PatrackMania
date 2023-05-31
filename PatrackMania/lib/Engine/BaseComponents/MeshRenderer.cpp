@@ -19,8 +19,7 @@ const glm::vec3 Ks(0.1, 0.1, 0.1);
 void MeshRenderer::Draw()
 {
 	auto shader = Engine::Graphics->GetShader();
-	auto view = Engine::Graphics->GetCameraView();
-
+	const auto& view = Engine::Graphics->GetCameraView();
 	auto model = transform->GetModel();
 	glm::mat4 mview = view * model;
 
@@ -50,4 +49,6 @@ void MeshRenderer::Draw()
 	glGetBufferParameteriv(GL_ELEMENT_ARRAY_BUFFER, GL_BUFFER_SIZE, &size);
 	glDrawElements(GL_TRIANGLES, size / sizeof(unsigned int), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
+
+	shader->disable();
 }

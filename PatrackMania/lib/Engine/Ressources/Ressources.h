@@ -19,6 +19,8 @@ private:
 	std::map<std::string, GameObject*> m_prefabs;
 
 public:
+	void InitDefault();
+
 	Texture* GetTexture(const std::string& name) const;
 	Material* GetMaterial(const std::string& name) const;
 	Mesh* GetMesh(const std::string& name) const;
