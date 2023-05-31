@@ -48,9 +48,9 @@ glm::vec3 Transform::LocalPosition() const { return m_localPosition; }
 glm::quat Transform::LocalRotation() const { return m_localRotation; }
 glm::vec3 Transform::LocalScale() const { return m_localScale; }
 
-glm::vec3 Transform::Up() const { return m_worldRotation * glm::vec4(0, 1, 0, 1); }
-glm::vec3 Transform::Right() const { return m_worldRotation * glm::vec4(1, 0, 0, 1); }
-glm::vec3 Transform::Forward() const { return m_worldRotation * glm::vec4(0, 0, 1, 1); }
+glm::vec3 Transform::Up() const { return m_localRotation * glm::vec4(0, 1, 0, 1); }
+glm::vec3 Transform::Right() const { return m_localRotation * glm::vec4(1, 0, 0, 1); }
+glm::vec3 Transform::Forward() const { return m_localRotation * glm::vec4(0, 0, 1, 1); }
 
 void Transform::SetPosition(const glm::vec3& position) { m_worldPosition = position; RecalculateFromWorld(); }
 void Transform::SetRotation(const glm::quat& rotation) { m_worldRotation = rotation; RecalculateFromWorld(); }

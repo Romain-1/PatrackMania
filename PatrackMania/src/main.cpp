@@ -16,6 +16,7 @@
 #include <glm/gtx/string_cast.hpp>
 
 #include "CarController.h"
+#include "CameraFollow.h"
 
 const int WIDTH = 1280;
 const int HEIGHT = 720;
@@ -104,9 +105,21 @@ int main(int argc, char** argv)
 
 	auto camera = Engine::Graphics->MainCamera()->gameObject;
 
+	GameObject* cube = new GameObject("cube", glm::vec3(0, 0, 0));
+	cube->transform->SetParent(car->transform);
+	cube->transform->SetLocalPosition(glm::vec3(0, -2, 2));
+	auto cubeMeshRenderer = cube->AddComponent<MeshRenderer>();
+	cubeMeshRenderer->mesh = Engine::Ressources->GetMesh("defaultCube");
+	cubeMeshRenderer->material = Engine::Ressources->GetMaterial("default");
+
+	auto cameraFollow = camera->AddComponent<CameraFollow>();
+	cameraFollow->target = cube->transform;
+
+	Engine::Add(cube);
 	Engine::Add(car);
 	Engine::Add(road);
 	Engine::Add(camera);
+
 
 	Engine::Run();
 	return 0;
