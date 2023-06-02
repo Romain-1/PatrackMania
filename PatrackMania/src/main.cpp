@@ -54,20 +54,23 @@ int main(int argc, char** argv)
 
 	car->AddComponent<CarController>();
 	car->transform->Childs()[0]->SetLocalScale(glm::vec3(1, 1, 1));
+	car->transform->SetPosition(glm::vec3(70, 3, 35));
 
 	auto camera = Engine::Graphics->MainCamera()->gameObject;
+	camera->transform->SetPosition(glm::vec3(100, 40, -80));
+	camera->transform->SetForward(car->transform->Position() - camera->transform->Position());
 
-	GameObject* cube = new GameObject("cube", glm::vec3(0, 0, 0));
-	cube->transform->SetParent(car->transform);
-	cube->transform->SetLocalPosition(glm::vec3(0, -2, 2));
-	auto cubeMeshRenderer = cube->AddComponent<MeshRenderer>();
-	cubeMeshRenderer->mesh = Engine::Ressources->GetMesh("defaultCube");
-	cubeMeshRenderer->material = Engine::Ressources->GetMaterial("default");
+	//GameObject* cube = new GameObject("cube", glm::vec3(0, 0, 0));
+	//cube->transform->SetParent(car->transform);
+	//cube->transform->SetLocalPosition(glm::vec3(0, -2, 2));
+	//auto cubeMeshRenderer = cube->AddComponent<MeshRenderer>();
+	//cubeMeshRenderer->mesh = Engine::Ressources->GetMesh("defaultCube");
+	//cubeMeshRenderer->material = Engine::Ressources->GetMaterial("default");
 
 	auto cameraFollow = camera->AddComponent<CameraFreeController>();
 	//cameraFollow->target = cube->transform;
 
-	Engine::Add(cube);
+	//Engine::Add(cube);
 	Engine::Add(car);
 	Engine::Add(road);
 	Engine::Add(camera);

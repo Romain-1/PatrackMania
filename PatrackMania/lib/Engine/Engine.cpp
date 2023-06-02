@@ -168,7 +168,7 @@ void Engine::Run()
 	{
 		//Console.Log(__func__, "loop");
 
-		RenderText(TextShader, "Hello world", 100, 100, 1, glm::vec3(200, 200, 200));
+		RenderText(TextShader, "Track 1", 100, 100, 1, glm::vec3(255, 255, 255));
 		auto start = std::chrono::system_clock::now();
 
 		for (auto module : m_addedModules) { module->Init(); m_modules.push_back(module); }
