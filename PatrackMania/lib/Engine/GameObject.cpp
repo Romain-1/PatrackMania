@@ -54,7 +54,7 @@ void GameObject::Update(float deltaTime)
 	}
 
 #ifndef PROD
-	transformGizmos->Draw();
+	transformGizmos->Draw(transform->GetModel());
 #endif
 }
 

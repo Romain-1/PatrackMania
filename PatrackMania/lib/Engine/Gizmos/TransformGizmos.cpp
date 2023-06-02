@@ -10,23 +10,25 @@ TransformGizmos::TransformGizmos()
 	up = Mesh::GenerateLineMesh({ glm::vec3(0, 0, 0), glm::vec3(0, 100, 0) });
 	right = Mesh::GenerateLineMesh({ glm::vec3(0, 0, 0), glm::vec3(100, 0, 0) });
 	
-	m_shader = new Shader();
-	m_shader->initFromStrings(vertexShader, fragShader);
-	m_shader->addUniform("color");
-	m_shader->addUniform("projection");
-	m_shader->addUniform("view");
+	if (!m_shader)
+	{
+		m_shader = new Shader();
+		m_shader->initFromStrings(vertexShader, fragShader);
+		m_shader->addUniform("color");
+		m_shader->addUniform("MVP");
+	}
 
 }
 
-void TransformGizmos::Draw() const
+void TransformGizmos::Draw(const glm::mat4& model) const
 {
 	const auto& projection = Engine::Graphics->GetCameraProjection();
 	const auto& view = Engine::Graphics->GetCameraView();
+	const auto& mvp = model * view * projection;
 
 	m_shader->use();
 
-	glUniformMatrix4fv(m_shader->uniform("projection"), 1, GL_FALSE, glm::value_ptr(projection));
-	glUniformMatrix4fv(m_shader->uniform("view"), 1, GL_FALSE, glm::value_ptr(view));
+	glUniformMatrix4fv(m_shader->uniform("MVP"), 1, GL_FALSE, glm::value_ptr(mvp));
 
 	{
 		glUniformMatrix4fv(m_shader->uniform("color"), 1, GL_FALSE, glm::value_ptr(glm::vec3(0, 0, 1)));

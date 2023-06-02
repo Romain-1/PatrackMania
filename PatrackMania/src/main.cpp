@@ -16,27 +16,11 @@
 #include <glm/gtx/string_cast.hpp>
 
 #include "CarController.h"
-#include "CameraFollow.h"
+#include "Camera/CameraFollow.h"
+#include "Camera/CameraFreeController.h"
 
 const int WIDTH = 1280;
 const int HEIGHT = 720;
-
-void MouseDragging(Viewer &viewer, glm::vec2& lastMouse)
-{
-	glm::vec2 fracChange(
-		static_cast<float>(Mouse::cursor.x - lastMouse.x) / static_cast<float>(WIDTH),
-		static_cast<float>(lastMouse.y - Mouse::cursor.y) / static_cast<float>(HEIGHT)
-	);
-
-	if (Mouse::GetButtonState(GLFW_MOUSE_BUTTON_1) == PRESSED) {
-		viewer.rotate(fracChange.x, fracChange.y);
-	}
-	else if (Mouse::GetButtonState(GLFW_MOUSE_BUTTON_3) == PRESSED)
-		viewer.zoom(fracChange.y);
-	else if (Mouse::GetButtonState(GLFW_MOUSE_BUTTON_2) == PRESSED)
-		viewer.translate(-fracChange.x, -fracChange.y, 1);
-	lastMouse = Mouse::cursor;
-}
 
 //std::vector<cyclone::RigidBody*> _rigidBodies;
 //std::vector<cyclone::CollisionBox*> _collisionsBoxes;
@@ -80,7 +64,7 @@ int main(int argc, char** argv)
 	cubeMeshRenderer->mesh = Engine::Ressources->GetMesh("defaultCube");
 	cubeMeshRenderer->material = Engine::Ressources->GetMaterial("default");
 
-	//auto cameraFollow = camera->AddComponent<CameraFollow>();
+	auto cameraFollow = camera->AddComponent<CameraFreeController>();
 	//cameraFollow->target = cube->transform;
 
 	Engine::Add(cube);

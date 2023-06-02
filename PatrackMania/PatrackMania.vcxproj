@@ -146,7 +146,8 @@
     <ClInclude Include="..\Cyclone\pworld.h" />
     <ClInclude Include="..\Cyclone\random.h" />
     <ClInclude Include="..\Cyclone\world.h" />
-    <ClInclude Include="src\CameraFollow.h" />
+    <ClInclude Include="src\Camera\CameraFreeController.h" />
+    <ClInclude Include="src\Camera\CameraFollow.h" />
     <ClInclude Include="lib\Engine\BaseComponents\Camera.h" />
     <ClInclude Include="lib\Engine\Engine.h" />
     <ClInclude Include="lib\Engine\Modules\Graphics.h" />
@@ -188,7 +189,8 @@
     <ClCompile Include="..\Cyclone\pworld.cpp" />
     <ClCompile Include="..\Cyclone\random.cpp" />
     <ClCompile Include="..\Cyclone\world.cpp" />
-    <ClCompile Include="src\CameraFollow.cpp" />
+    <ClCompile Include="src\Camera\CameraFreeController.cpp" />
+    <ClCompile Include="src\Camera\CameraFollow.cpp" />
     <ClCompile Include="lib\Engine\BaseComponents\Camera.cpp" />
     <ClCompile Include="lib\Engine\Engine.cpp" />
     <ClCompile Include="lib\Engine\Modules\Graphics.cpp" />
