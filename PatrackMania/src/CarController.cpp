@@ -41,7 +41,16 @@ void CarController::Update(float deltaTime)
 	}
 	if (Keyboard::GetKeyState(GLFW_KEY_W) == PRESSED) {
 		//transform->SetForward(glm::lerp(transform->Forward(), FL->Forward(), 0.3f));
-		transform->SetPosition(transform->Position() + transform->Up() * -10.f * (float)deltaTime);
+		speed += deltaTime * acceleration;
 		//Console.Log(glm::to_string(Engine::Graphics->MainCamera()->transform->Position()));
 	}
+	else {
+		speed = (speed < 0) ? 0 : (speed - deltaTime * acceleration * 5);
+	}
+	if (speed >= 0)
+	{
+		//FL->SetLocalRotation();
+		transform->SetPosition(transform->Position() + transform->Up() * -speed * (float)deltaTime);
+	}
+
 }

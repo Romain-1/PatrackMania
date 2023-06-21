@@ -67,8 +67,8 @@ int main(int argc, char** argv)
 	//cubeMeshRenderer->mesh = Engine::Ressources->GetMesh("defaultCube");
 	//cubeMeshRenderer->material = Engine::Ressources->GetMaterial("default");
 
-	auto cameraFollow = camera->AddComponent<CameraFreeController>();
-	//cameraFollow->target = cube->transform;
+	auto cameraFollow = camera->AddComponent<CameraFollow>();
+	cameraFollow->target = car->transform;
 
 	//Engine::Add(cube);
 	Engine::Add(car);

@@ -10,6 +10,8 @@ private:
 	Transform* BL = nullptr;
 	Transform* BR = nullptr;
 	Transform* test = nullptr;
+	float speed = 0.f;
+	float acceleration = 10.f;
 
 	void ControlWheel(float t, float deltaTime);
 
