@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Modules/Graphics.h"
+#include "Modules/Physics.h"
 #include "Ressources/Ressources.h"
 
 class Engine
@@ -14,6 +15,7 @@ private:
 public:
 	static inline bool debug = false;
 	static inline Module::Graphics* Graphics;
+	//static inline Module::Physics* Physics;
 	static inline Ressources* Ressources;
 
 public:
