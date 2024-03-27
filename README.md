@@ -1,6 +1,6 @@
 # PatrackMania
 
-Unfinished trackmania clone made from scratch with opengl.
+Unfinished trackmania clone made from scratch with opengl and cyclone.
 
 Features:
 - Custom game engine
